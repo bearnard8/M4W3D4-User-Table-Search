@@ -6,6 +6,8 @@ const tableBody = document.getElementById("tablebody");
 //Input di ricerca
 const searchInput = document.getElementById("search-input").value;
 
+//Array di users
+
 //Call di fetch globale con creazione iniziale della tabella
 window.onload = async () => {
     try {
@@ -24,7 +26,7 @@ function createTable (users) {
     let count = 1;
     users.forEach(user => {
         let newRow = document.createElement("tr");
-        let num = document.createElement("td");
+        let num = document.createElement("th");
         num.innerText = count;
         let name = document.createElement("td");
         name.innerText = user.name;
