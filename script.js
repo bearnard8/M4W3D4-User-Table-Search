@@ -9,7 +9,7 @@ const searchInput = document.getElementById("search-input").value;
 //Array di users
 
 //Call di fetch globale con creazione iniziale della tabella
-window.onload = async () => {
+const usersData = async () => {
     try {
         const response = await fetch("https://jsonplaceholder.typicode.com/users");
         const users = await response.json();
@@ -19,6 +19,7 @@ window.onload = async () => {
     }
 }
 
+window.onload = usersData;
 //Funzione di creazione della tabella
 
 function createTable (users) {
@@ -53,9 +54,12 @@ function filterUsers () {
     //Parametro di filtraggio
     const searchParam = document.getElementById("param-selection").value;
     let filteredResults = [];
-
+    
     if (searchParam === "Name") {
-        console.log(searchParam);
+        filteredResults = usersData.filter((user) => {
+            return user.name.toLowerCase().includes(searchParam.toLowerCase().trim());
+        })
+        console.log(filteredResults);
     } else if (searchParam === "Username") {
         console.log(searchParam);
     } else if (searchParam === "e-Mail") {
